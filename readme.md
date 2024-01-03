@@ -28,9 +28,9 @@ Repository for normalizing whole slide images (WSI) patches.
 │       └── patch_n.png
 ```
 
-3.  modify the following arguments: `<TRAGET FOLDER> <OUTPUT FOLDER> <NORM METHOD> <TRAGET IMAGE>`, and run:
+3.  modify the following arguments: `<TARGET FOLDER> <OUTPUT FOLDER> <NORM METHOD> <TARGET IMAGE>`, and run:
 ```bash
-python main.py --target_dir <TRAGET FOLDER> --output_dir <OUTPUT FOLDER> --method <NORM METHOD> --target_img <TRAGET IMAGE>
+python main.py --target_dir <TARGET FOLDER> --output_dir <OUTPUT FOLDER> --method <NORM METHOD> --target_img <TARGET IMAGE>
 ```
 make sure the `<NORM METHOD>` is in **reinhard**, **macenko**, **vahadane**
 
