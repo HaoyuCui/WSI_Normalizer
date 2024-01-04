@@ -27,6 +27,7 @@ Repository for normalizing whole slide images (WSI) patches.
 │       ├── ...
 │       └── patch_n.png
 ```
+Note that png or jpg images are supported
 
 3.  modify the following arguments: `<TARGET FOLDER> <OUTPUT FOLDER> <NORM METHOD> <TARGET IMAGE>`, and run:
 ```bash

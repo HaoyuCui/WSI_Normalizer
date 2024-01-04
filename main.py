@@ -57,7 +57,7 @@ if __name__ == '__main__':
             length = len(os.listdir(abs_path))
             for file in os.listdir(abs_path):
                 file = os.path.join(dir, file)
-                if file.endswith('.jpg') or file.endswith('.png'):
+                if file.endswith('.jpg') or file.endswith('.png') or file.endswith('.jpeg'):
                     tic = time.time()
                     img_path = os.path.join(root, file)
                     norm_img = read_image(img_path)
