@@ -36,3 +36,18 @@ python main.py --target_dir <TARGET FOLDER> --output_dir <OUTPUT FOLDER> --metho
 make sure the `<NORM METHOD>` is in **reinhard**, **macenko**, **vahadane**
 
 4. each slide will be normalized and saved in the output folder with the same name as the original slide, with a suffix of `.jpg`.
+
+5. I also provide a sample script and image in the repository, you can simply run:
+```bash
+python main.py --target_dir eg/origin --output_dir eg/norm --method vahadane --target_img eg/standard.jpg
+```
+here, I use vahadane as norm method, and use standard.jpg as target image
+
+The 3 methods' results are shown below:
+
+|                       Original                        |                 Standard (target)                 |                 Reinhard                 |                 Macenko                 |                 Vahadane                 |
+|:-----------------------------------------------------:|:-------------------------------------------------:|:----------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| <img src="eg/origin/eg_slide_1/eg_1.jpg" width="200"> | <img src="eg/standard.jpg" width="200"> | <img src=".github/eg_1_r.jpg" width="200"> | <img src=".github/eg_1_m.jpg" width="200"> | <img src=".github/eg_1_v.jpg" width="200"> |
+| <img src="eg/origin/eg_slide_1/eg_2.jpg" width="200"> | <img src="eg/standard.jpg" width="200"> | <img src=".github/eg_2_r.jpg" width="200"> | <img src=".github/eg_2_m.jpg" width="200"> | <img src=".github/eg_2_v.jpg" width="200"> |
+
+
