@@ -37,7 +37,20 @@ make sure the `<NORM METHOD>` is in **reinhard**, **macenko**, **vahadane**
 
 4. each slide will be normalized and saved in the output folder with the same name as the original slide, with a suffix of `.jpg`.
 
-5. I also provide a sample script and image in the repository, you can simply run:
+5. you can also call the function directly in your code:
+```python
+# use macenko as an example
+import cv2
+from src.norm_tools import MacenkoNormalizer
+from main import read_image
+normalizer = MacenkoNormalizer()
+normalizer.fit(read_image('TARGET_IMAGE.jpg'))
+norm_img = normalizer.transform(read_image('INPUT_IMAGE.jpg'))
+cv2.imwrite('OUTPUT_IMAGE.jpg', norm_img)
+```
+
+
+6. I also provide a sample script and corresponding images in this repository, simply run:
 ```bash
 python main.py --target_dir eg/origin --output_dir eg/norm --method vahadane --target_img eg/standard.jpg
 ```
