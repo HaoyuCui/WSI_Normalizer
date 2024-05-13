@@ -65,7 +65,7 @@ if __name__ == '__main__':
                     norm_img_path = os.path.join(args.output_dir, os.path.relpath(img_path, args.target_dir))
                     # replace the extension, jpg for efficient compression, png for lossless compression
                     norm_img_path = norm_img_path.replace('.png', '.jpg')
-                    cv2.imwrite(norm_img_path, norm_img)
+                    cv2.imwrite(norm_img_path, cv2.cvtColor(norm_img, cv2.COLOR_RGB2BGR))
                     info = 'Processing {} / {} Time elapse {:.2f} s'.format(idx, length, time.time()-tic)
                     print(info)
                     idx += 1
