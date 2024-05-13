@@ -57,15 +57,15 @@ cv2.imwrite('OUTPUT_IMAGE.jpg', norm_img)
 
 6. I also provide a sample script and corresponding images in this repository, simply run:
 ```bash
-python main.py --target_dir eg/origin --output_dir eg/norm --method vahadane --target_img eg/standard.jpg
+python main.py --target_dir eg/origin --output_dir eg/norm --method reinhard --target_img eg/standard.jpg
 ```
 here, I use vahadane as norm method, and use standard.jpg as target image
 
 The 3 methods' results are shown below:
 
-|                       Original                        |                 Standard (target)                 |                 Reinhard                 |                 Macenko                 |                 Vahadane                 |
-|:-----------------------------------------------------:|:-------------------------------------------------:|:----------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| <img src="eg/origin/eg_slide_1/eg_1.jpg" width="200"> | <img src="eg/standard.jpg" width="200"> | <img src=".github/eg_1_r.jpg" width="200"> | <img src=".github/eg_1_m.jpg" width="200"> | <img src=".github/eg_1_v.jpg" width="200"> |
-| <img src="eg/origin/eg_slide_1/eg_2.jpg" width="200"> | <img src="eg/standard.jpg" width="200"> | <img src=".github/eg_2_r.jpg" width="200"> | <img src=".github/eg_2_m.jpg" width="200"> | <img src=".github/eg_2_v.jpg" width="200"> |
+|                       Original                        |                 Standard (target)                 |                     Reinhard                      |                     Macenko                      |                     Vahadane                      |
+|:-----------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|:------------------------------------------------:|:-------------------------------------------------:|
+| <img src="eg/origin/eg_slide_1/eg_1.jpg" width="200"> | <img src="eg/standard.jpg" width="200"> | <img src="eg/norm/reinhard/eg_1.jpg" width="200"> | <img src="eg/norm/macenko/eg_1.jpg" width="200"> | <img src="eg/norm/vahadane/eg_1.jpg" width="200"> |
+| <img src="eg/origin/eg_slide_1/eg_2.jpg" width="200"> | <img src="eg/standard.jpg" width="200"> | <img src="eg/norm/reinhard/eg_2.jpg" width="200">  |       <img src="eg/norm/macenko/eg_2.jpg">       | <img src="eg/norm/vahadane/eg_2.jpg" width="200">  |
 
 
