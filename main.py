@@ -19,7 +19,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--target_dir', type=str)
     parser.add_argument('--output_dir', type=str)
-    parser.add_argument('--method', type=str, default='vahadane', choices=['macenko', 'reinhard', 'vahadane'])
+    parser.add_argument('--method', type=str, default='vahadane',
+                        choices=['macenko', 'reinhard', 'vahadane', 'vahadane-gpu'])
     parser.add_argument('--target_img', type=str, default='target.jpg')
 
     args = parser.parse_args()
@@ -38,6 +39,18 @@ if __name__ == '__main__':
         normalizer = ReinhardNormalizer()
     elif args.method == 'vahadane':
         normalizer = VahadaneNormalizer()
+    elif args.method == 'vahadane-gpu':
+        try:
+            from src.torchvahadane import TorchVahadaneNormalizer
+            from src.torchvahadane.utils import is_cuda_ready
+            if not is_cuda_ready():
+                ImportError('CUDA is not ready, import failed')
+            else:
+                print('CUDA is ready, using GPU version')
+            normalizer = TorchVahadaneNormalizer(device='cuda', staintools_estimate=True)
+        except ImportError as e:
+            print(f'Dependencies are not all installed, fallback to CPU version \n {e}')
+            normalizer = VahadaneNormalizer()
     else:
         print(f'Unsupported normalization method {args.method}')
         exit(-1)
