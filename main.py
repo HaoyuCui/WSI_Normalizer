@@ -28,8 +28,8 @@ if __name__ == '__main__':
 
     # copy the file structure of target_dir to output_dir
     for root, dirs, files in os.walk(args.target_dir):
-        for dir in dirs:
-            os.makedirs(os.path.join(args.output_dir, dir), exist_ok=True)
+        for subdir in dirs:
+            os.makedirs(os.path.join(args.output_dir, subdir), exist_ok=True)
 
     # normalization
     method = args.method
@@ -62,14 +62,15 @@ if __name__ == '__main__':
     target_img = read_image(target_img)
     normalizer.fit(target_img)
     # iter through the target_dir
+    total = len(os.listdir(args.target_dir))
+    idx = 1
     for root, dirs, files in os.walk(args.target_dir):
-        for dir in tqdm(dirs):
-            print(f'Processing folder: {dir}')
-            idx = 0
-            abs_path = os.path.join(root, dir)
-            length = len(os.listdir(abs_path))
-            for file in os.listdir(abs_path):
-                file = os.path.join(dir, file)
+        for subdir in dirs:
+            print(f'Processing folder: {subdir} ({idx}/{total})')
+            abs_path = os.path.join(root, subdir)
+            p_bar = tqdm(os.listdir(abs_path))
+            for file in p_bar:
+                file = os.path.join(subdir, file)
                 if file.endswith('.jpg') or file.endswith('.png') or file.endswith('.jpeg'):
                     tic = time.time()
                     img_path = os.path.join(root, file)
@@ -79,9 +80,8 @@ if __name__ == '__main__':
                     # replace the extension, jpg for efficient compression, png for lossless compression
                     norm_img_path = norm_img_path.replace('.png', '.jpg')
                     cv2.imwrite(norm_img_path, cv2.cvtColor(norm_img, cv2.COLOR_RGB2BGR))
-                    info = 'Processing {} / {} Time elapse {:.2f} s'.format(idx, length, time.time()-tic)
-                    print(info)
-                    idx += 1
+                    p_bar.desc = '[{}] Current inference time {:.2f} s'.format(subdir, time.time()-tic)
+            idx += 1
     print('Done')
 
 
