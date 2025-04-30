@@ -8,15 +8,42 @@ How to start? [blog](https://blog.csdn.net/CalvinTri/article/details/135429053)
 ## Description
 Repository for normalizing whole slide images (WSI) patches.
 
-### Updates [10/2024]
-1. Thanks to Cédric Walker's [torchvahadane](https://github.com/cwlkr/torchvahadane)! We have added GPU(Cuda) support for [Vahadane](https://ieeexplore.ieee.org/abstract/document/7460968/) method. We can now boost up stain normalization speed by 2x+.
+### Updates
+1. **[10/2024]** Thanks to Cédric Walker's [torchvahadane](https://github.com/cwlkr/torchvahadane)! We have added GPU(Cuda) support for [Vahadane](https://ieeexplore.ieee.org/abstract/document/7460968/) method. We can now boost up stain normalization speed by 2x+.
+2. **[04/2025]** We have upload the [PyPI package](https://pypi.org/project/wsi-normalizer/) for this repository. You can directly install it by using pip and use it without clone the repository.
 
 ### Support for:
 1. [Reinhard](https://ieeexplore.ieee.org/abstract/document/946629/) Reinhard, Erik, et al. "Color transfer between images." IEEE Computer graphics and applications 21.5 (2001): 34-41.
 2. [Macenko](https://ieeexplore.ieee.org/abstract/document/5193250) Macenko, Marc, et al. "A method for normalizing histology slides for quantitative analysis." 2009 IEEE international symposium on biomedical imaging: from nano to macro. IEEE, 2009.
 3. [Vahadane](https://ieeexplore.ieee.org/abstract/document/7460968/) Vahadane, Abhishek, et al. "Structure-preserving color normalization and sparse stain separation for histological images." IEEE transactions on medical imaging 35.8 (2016): 1962-1971.
 
-## Installation
+
+## Package Usage
+
+Install the package via PyPI:
+
+```bash
+  pip install wsi-normalizer
+```
+
+Then you can use it in your code:
+
+```python
+import cv2
+from wsi_normalizer import MacenkoNormalizer  # or ReinhardNormalizer, VahadaneNormalizer, TorchVahadaneNormalizer
+
+def read_image(path):
+    return cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB)
+
+# Core function
+macenko_normalizer = MacenkoNormalizer()
+macenko_normalizer.fit(read_image('TARGET_IMAGE.jpg'))
+norm_img = macenko_normalizer.transform(read_image('INPUT_IMAGE.jpg'))
+
+cv2.imwrite('OUTPUT_IMAGE.jpg', cv2.cvtColor(norm_img, cv2.COLOR_RGB2BGR))
+```
+
+## Local Installation
 1. run `pip install -r requirements.txt` for installing dependencies.
 
 if you need the GPU support for Vahadane method, you need to additionally install the `pytorch-gpu`, `scipy`, `kornia (optional)`
@@ -51,20 +78,7 @@ Please note that **vahadane-gpu** is more suitable for high resolution image nor
 
 4. each slide will be normalized and saved in the output folder with the same name as the original slide, with a suffix of `.jpg`.
 
-5. you can also call the function directly in your code:
-```python
-# use macenko as an example
-import cv2
-from src.norm_tools import MacenkoNormalizer
-from main import read_image
-normalizer = MacenkoNormalizer()
-normalizer.fit(read_image('TARGET_IMAGE.jpg'))
-norm_img = normalizer.transform(read_image('INPUT_IMAGE.jpg'))
-# transform the image back to BGR before saving
-cv2.imwrite('OUTPUT_IMAGE.jpg', norm_img)
-```
-
-6. I also provide a sample script and corresponding images in this repository, simply run:
+5. I also provide a sample script and corresponding images in this repository, simply run:
 ```bash
 python main.py --target_dir eg/origin --output_dir eg/norm --method vahadane-gpu --target_img eg/standard.jpg
 ```
