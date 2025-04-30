@@ -1,4 +1,4 @@
-# WSI Normalizer: a color stain normalization tool for whole slide images
+# WSI Normalizer: a color stain normalization tool/package for whole slide images
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Inspired by & reconstructed from this repository [link](https://github.com/wanghao14/Stain_Normalization)
@@ -23,7 +23,7 @@ Repository for normalizing whole slide images (WSI) patches.
 Install the package via PyPI:
 
 ```bash
-  pip install wsi-normalizer
+pip install wsi-normalizer
 ```
 
 Then you can use it in your code:
