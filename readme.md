@@ -61,7 +61,7 @@ normalizer = MacenkoNormalizer()
 normalizer.fit(read_image('TARGET_IMAGE.jpg'))
 norm_img = normalizer.transform(read_image('INPUT_IMAGE.jpg'))
 # transform the image back to BGR before saving
-cv2.imwrite('OUTPUT_IMAGE.jpg', cv2.cvtColor(norm_img, cv2.COLOR_RGB2BGR))
+cv2.imwrite('OUTPUT_IMAGE.jpg', norm_img)
 ```
 
 6. I also provide a sample script and corresponding images in this repository, simply run:
