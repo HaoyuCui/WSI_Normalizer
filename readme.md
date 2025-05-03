@@ -32,15 +32,11 @@ Then you can use it in your code:
 
 ```python
 import cv2
-from wsi_normalizer import MacenkoNormalizer  # or ReinhardNormalizer, VahadaneNormalizer, TorchVahadaneNormalizer
+from wsi_normalizer import imread, MacenkoNormalizer  # or ReinhardNormalizer, VahadaneNormalizer, TorchVahadaneNormalizer
 
-def read_image(path):
-    return cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB)
-
-# Core function
 macenko_normalizer = MacenkoNormalizer()
-macenko_normalizer.fit(read_image('TARGET_IMAGE.jpg'))
-norm_img = macenko_normalizer.transform(read_image('INPUT_IMAGE.jpg'))
+macenko_normalizer.fit(imread('TARGET_IMAGE.jpg'))
+norm_img = macenko_normalizer.transform(imread('INPUT_IMAGE.jpg'))
 
 cv2.imwrite('OUTPUT_IMAGE.jpg', cv2.cvtColor(norm_img, cv2.COLOR_RGB2BGR))
 ```
