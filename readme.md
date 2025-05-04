@@ -1,5 +1,7 @@
 # WSI Normalizer: a color stain normalization tool/package for whole slide images
 
+<img width="256" alt="image" align="right" src="https://github.com/user-attachments/assets/72b4bc70-110a-4345-86d0-403b8c0322f5" />
+
 [![PyPI version](https://img.shields.io/pypi/v/wsi-normalizer)](https://pypi.org/project/wsi-normalizer/)
 [![PyPI license](https://img.shields.io/pypi/l/wsi-normalizer)](https://pypi.org/project/wsi-normalizer/)
 
