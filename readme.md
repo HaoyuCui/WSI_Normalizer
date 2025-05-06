@@ -4,6 +4,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/wsi-normalizer)](https://pypi.org/project/wsi-normalizer/)
 [![PyPI license](https://img.shields.io/pypi/l/wsi-normalizer)](https://pypi.org/project/wsi-normalizer/)
+[![PyPI Downloads](https://static.pepy.tech/badge/wsi-normalizer)](https://pepy.tech/projects/wsi-normalizer)
 
 Inspired by & reconstructed from this repository [link](https://github.com/wanghao14/Stain_Normalization)
 
